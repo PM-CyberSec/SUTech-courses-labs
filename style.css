@@ -1,105 +1,147 @@
+html, body {
+  background-color: #000000;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  color: white;
+}
+
 .head2 {
   text-decoration: underline dashed;
   font-size: 24px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Arial, sans-serif;
   font-style: oblique;
   font-weight: 900;
   font-variant: small-caps;
-  color: rgba(255, 0, 0, 0.5);
+  color: rgb(32, 198, 175);
+  text-align: center;
+  background-color: black;
+  border-radius: 5px;
 }
 
 ol {
-  color: green;
+  color: white;
 }
 
 #id1 {
-  color: brown;
+  color: rgb(31, 146, 175);
 }
 
 footer h2 {
-  color: orange;
+  color: rgb(32, 198, 175);
 }
 
 h1 {
   font-size: 200%;
-  color: darkblue;
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
+  color: darkslategrey;
+  font-family: Arial, sans-serif;
+  font-style: normal;
   font-weight: bold;
-  font-variant: small-caps;
-  border: red solid 9px;
-  border-top: blue dashed 3px;
-  padding: 40px 20px 10px 5px;
-  margin: 40px 20px 10px 5px;
+  font-variant: normal;
+  border: none;
+  border-top: none;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+h2, h3 {
+  color: rgb(32, 198, 175);
+  text-align: center;
+  background-color: black;
+  border-radius: 5px;
 }
 
 p {
   font-size: 100%;
-  color: #333333;
-  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-family: Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-variant: normal;
 }
 
 table {
-  color: darkslategray;
+  color: white;
   font-size: 100%;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Arial, sans-serif;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 th {
-  color: blue;
+  color: rgb(31, 146, 175);
   font-size: 100%;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Arial, sans-serif;
 }
 
 td {
-  color: darkred;
+  color: white;
   font-size: 100%;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 form {
-  color: darkgreen;
+  color: white;
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
 }
 
 a:link {
-  color: green;
+  color: cadetblue;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 a:visited {
-  color: red;
+  color: #1d3146;
 }
 
 a:hover {
-  font-size: 30px;
-  color: aqua;
+  font-size: inherit;
+  color: aquamarine;
 }
 
 a:active {
-  color: violet;
-  text-decoration: underline;
+  color: rgb(32, 198, 175);
+  text-decoration: none;
 }
 
 .divimg {
-  background-color: aqua;
+  background-color: rgba(0, 0, 0, 0.7);
   width: 300px;
+  border-radius: 15px;
+  padding: 10px;
+  backdrop-filter: blur(6px);
 }
 
 section {
-  background-color: orange;
+  background-color: transparent;
+  color: white;
 }
 
 nav {
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
 }
 
 #cd {
   display: inline-block;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
 }
 
 #invisible {
@@ -109,12 +151,16 @@ nav {
 #ovrflw {
   width: 400px;
   height: 200px;
-  border: 2px solid black;
+  border: 2px solid rgb(32, 198, 175);
   overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
 }
 
 .container {
-  background-color: rgb(64, 9, 247);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 6px;
   margin: 12px;
   min-height: 350px;
@@ -122,10 +168,12 @@ nav {
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
 }
 
 .container div {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(44, 62, 80, 0.8);
   width: 200px;
   height: 200px;
   display: flex;
@@ -133,26 +181,28 @@ nav {
   justify-content: center;
   align-items: center;
   font-size: 42px;
+  color: white;
+  border-radius: 10px;
 }
 
 .child1 {
-  background-color: red;
+  background-color: rgba(36, 113, 133, 0.8);
 }
 
 .child2 {
-  background-color: blue;
+  background-color: rgba(31, 146, 175, 0.8);
 }
 
 .child3 {
-  background-color: green;
+  background-color: rgba(32, 198, 175, 0.8);
 }
 
 .child4 {
-  background-color: yellow;
+  background-color: rgba(44, 62, 80, 0.8);
 }
 
 .grid-container {
-  background: white;
+  background: rgba(0, 0, 0, 0.7);
   width: 700px;
   height: 300px;
   display: grid;
@@ -166,29 +216,99 @@ nav {
   row-gap: 8px;
   column-gap: 8px;
   padding: 8px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
 }
 
 .header {
   text-align: center;
   grid-area: header;
-  background: blue;
+  background: rgba(36, 113, 133, 0.8);
+  border-radius: 5px;
+  color: white;
 }
 
 .content {
   text-align: center;
   grid-area: content1;
-  background: rgb(120, 120, 241);
+  background: rgba(31, 146, 175, 0.8);
+  border-radius: 5px;
+  color: white;
 }
 
 .sidebar {
   text-align: center;
   grid-area: sidebar;
-  background: rgb(152, 152, 197);
+  background: rgba(44, 62, 80, 0.8);
+  border-radius: 5px;
+  color: white;
 }
 
 .footer {
   text-align: center;
   grid-area: footer;
   color: white;
-  background: rgb(10, 10, 48);
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  margin: 10px;
+}
+
+aside {
+  width: 260px;
+  height: 100%;
+  background-color: #2c3e50;
+  color: white;
+  padding: 10px;
+  margin-right: 10px;
+  overflow: auto;
+  z-index: 1;
+  border-radius: 10px;
+  position: absolute;
+  top: 1;
+  left: 0;
+  margin: 5;
+}
+
+code {
+  background: rgba(0, 0, 0, 0.7);
+  color: rgb(31, 146, 175);
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+}
+
+pre {
+  background: rgba(0, 0, 0, 0.7);
+  color: rgb(31, 146, 175);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+ul, li {
+  color: white;
+}
+
+input, textarea, select {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: 1px solid rgb(32, 198, 175);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+iframe {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+video {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.7);
 }
