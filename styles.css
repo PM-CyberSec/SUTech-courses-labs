@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+    padding: 30px;
+}
+
+:root {
+    --bg: #ffffff;
+    --text: #222;
+    --card: #f3f3f3;
+}
+
+.dark {
+    --bg: #1c1c1c;
+    --text: #fff;
+    --card: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#theme-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.task-input input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+}
+
+.task-input button {
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filters button {
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+    background: var(--card);
+}
+
+.filters .active {
+    background: #3b82f6;
+    color: white;
+}
+
+#taskList {
+    list-style: none;
+}
+
+.task {
+    background: var(--card);
+    padding: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    animation: fadeIn 0.3s ease;
+}
+
+.task.completed .text {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.task button {
+    margin-left: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.priority {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+.high { background: #ff4c4c; color: white; }
+.medium { background: #ffcc00; color: #222; }
+.low { background: #3cb371; color: white; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}

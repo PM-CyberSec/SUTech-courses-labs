@@ -1,0 +1,194 @@
+.head2 {
+  text-decoration: underline dashed;
+  font-size: 24px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: oblique;
+  font-weight: 900;
+  font-variant: small-caps;
+  color: rgba(255, 0, 0, 0.5);
+}
+
+ol {
+  color: green;
+}
+
+#id1 {
+  color: brown;
+}
+
+footer h2 {
+  color: orange;
+}
+
+h1 {
+  font-size: 200%;
+  color: darkblue;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-weight: bold;
+  font-variant: small-caps;
+  border: red solid 9px;
+  border-top: blue dashed 3px;
+  padding: 40px 20px 10px 5px;
+  margin: 40px 20px 10px 5px;
+}
+
+p {
+  font-size: 100%;
+  color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+}
+
+table {
+  color: darkslategray;
+  font-size: 100%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+th {
+  color: blue;
+  font-size: 100%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+td {
+  color: darkred;
+  font-size: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+form {
+  color: darkgreen;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a:link {
+  color: green;
+  text-decoration: none;
+}
+
+a:visited {
+  color: red;
+}
+
+a:hover {
+  font-size: 30px;
+  color: aqua;
+}
+
+a:active {
+  color: violet;
+  text-decoration: underline;
+}
+
+.divimg {
+  background-color: aqua;
+  width: 300px;
+}
+
+section {
+  background-color: orange;
+}
+
+nav {
+  background-color: white;
+}
+
+#cd {
+  display: inline-block;
+}
+
+#invisible {
+  visibility: hidden;
+}
+
+#ovrflw {
+  width: 400px;
+  height: 200px;
+  border: 2px solid black;
+  overflow: auto;
+}
+
+.container {
+  background-color: rgb(64, 9, 247);
+  padding: 6px;
+  margin: 12px;
+  min-height: 350px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.container div {
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+}
+
+.child1 {
+  background-color: red;
+}
+
+.child2 {
+  background-color: blue;
+}
+
+.child3 {
+  background-color: green;
+}
+
+.child4 {
+  background-color: yellow;
+}
+
+.grid-container {
+  background: white;
+  width: 700px;
+  height: 300px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar content1"
+    "footer footer"
+  ;
+  row-gap: 8px;
+  column-gap: 8px;
+  padding: 8px;
+}
+
+.header {
+  text-align: center;
+  grid-area: header;
+  background: blue;
+}
+
+.content {
+  text-align: center;
+  grid-area: content1;
+  background: rgb(120, 120, 241);
+}
+
+.sidebar {
+  text-align: center;
+  grid-area: sidebar;
+  background: rgb(152, 152, 197);
+}
+
+.footer {
+  text-align: center;
+  grid-area: footer;
+  color: white;
+  background: rgb(10, 10, 48);
+}
