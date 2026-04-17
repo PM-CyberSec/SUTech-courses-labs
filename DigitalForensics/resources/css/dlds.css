@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 140, 0.15), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 100, 0.1), transparent 25%),
+        linear-gradient(135deg, #020617, #030712, #020617);
+
+    color: #d1fae5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.app-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.layout {
+    display: flex;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+/* sidebar */
+.sidebar {
+    width: 240px;
+    background: #111827;
+    min-height: 100vh;
+}
+
+/* navbar */
+.navbar {
+    height: 60px;
+    background: #0f172a;
+}
+
+/* cards */
+.card {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(0, 255, 140, 0.2);
+    backdrop-filter: blur(14px);
+
+    border-radius: 14px;
+    color: #d1fae5;
+
+    transition: 0.3s;
+}
+
+/* glow on hover */
+.card:hover {
+    border-color: rgba(0, 255, 140, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 140, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th {
+    color: #00ff9c;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #a7f3d0;
+}
+
+tr:hover {
+    background: rgba(0, 255, 140, 0.05);
+}
+
+.severity-high {
+    color: #ff4d4d;
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 0, 0, 0.5);
+}
+
+.severity-medium {
+    color: #facc15;
+}
+
+.severity-low {
+    color: #22c55e;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,255,140,0.2);
+    padding: 12px 20px;
+}
+
+.navbar .logo {
+    color: #00ff9c;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.sidebar {
+    width: 220px;
+    background: rgba(0, 0, 0, 0.85);
+    border-right: 1px solid rgba(0,255,140,0.2);
+    padding: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #86efac;
+    margin: 12px 0;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    color: #00ff9c;
+    text-shadow: 0 0 8px rgba(0,255,140,0.7);
+    transform: translateX(3px);
+}
