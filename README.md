@@ -111,8 +111,8 @@ sudo systemctl enable --now auditd
 ### Step 1: Backend Setup (Laravel)
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/DigitalForensics.git
-cd DigitalForensics
+git clone https://github.com/Nady-Emad/DLDS-SOC.git
+cd DLDS-SOC
 
 # Install PHP dependencies
 composer install
@@ -159,7 +159,7 @@ sudo DLDS_RUN_SERVICES=1 ./run_services.sh
 ### 🚀 Automated Execution (Recommended)
 You can launch the entire project automatically using the provided magic script. This script will bootstrap Zeek/Suricata, compile the UI assets, and launch the Laravel Backend and Python Engine in separate terminal windows for easy monitoring:
 ```bash
-cd DigitalForensics
+cd DLDS-SOC
 ./ran.sh
 ```
 
