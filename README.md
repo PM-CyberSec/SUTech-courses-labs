@@ -49,6 +49,8 @@ The network is hardened against common misconfigurations using modern segmentati
 
 ## [ 💾 ] LOG_03: SYSTEM MODULES (TOPOLOGY)
 
+<img width="1526" height="710" alt="image" src="https://github.com/user-attachments/assets/81e8b5cc-523a-4542-961a-4c2e4a381407" />
+
 #### 🌐 [CORE_SWITCH] > [MLS_3560]
 > Central routing and VLAN gateway.
 > Handles inter-VLAN routing, DHCP services, and layer 3 switching.
