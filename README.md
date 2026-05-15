@@ -4,7 +4,7 @@
 
 ![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-39FF14?style=for-the-badge&logo=shield)
 ![Stack](https://img.shields.io/badge/STACK-PHP_JS_Python-005571?style=for-the-badge&logo=php)
-![Environment](https://img.shields.io/badge-ENV-Development-orange?style=for-the-badge&logo=linux)
+![Environment](https://img.shields.io/badge/ENV-Development-orange?style=for-the-badge&logo=linux&logoColor=white)
 
 ### > Welcome, friend.
 ### > You are accessing the Digital Forensics & Detection System.
@@ -25,14 +25,20 @@ This project implements a comprehensive digital forensics and threat detection s
 ## [ ⚙ ] THE TOOLKIT (DECRYPTED)
 This project was built using modern cybersecurity technologies:
 
-💻 **Backend**
-![PHP](https://img.shields.io/badge-PHP-777BB4?style=for-the-badge&logo=php) ![Laravel](https://img.shields.io/badge-Laravel-FF2D20?style=for-the-badge&logo=laravel) ![Python](https://img.shields.io/badge-Python-3776AB?style=for-the-badge&logo=python)
+## 💻 Backend
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-🛡️ **Detection Tools**
-![Zeek](https://img.shields.io/badge-Zeek-0088CC?style=for-the-badge) ![Suricata](https://img.shields.io/badge-Suricata-E94F28?style=for-the-badge) ![Python](https://img.shields.io/badge-Python_Scripts-3776AB?style=for-the-badge)
+## 🛡️ Detection Tools
+![Zeek](https://img.shields.io/badge/Zeek-0088CC?style=for-the-badge)
+![Suricata](https://img.shields.io/badge/Suricata-E94F28?style=for-the-badge)![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
+![Python Scripts](https://img.shields.io/badge/Python_Scripts-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-📊 **Frontend**
-![JavaScript](https://img.shields.io/badge-JavaScript-F7DF1E?style=for-the-badge&logo=javascript) ![React](https://img.shields.io/badge-React-61DAFB?style=for-the-badge&logo=react) ![Vite](https://img.shields.io/badge-Vite-646CFF?style=for-the-badge&logo=vite)
+## 📊 Frontend
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
 ---
 
