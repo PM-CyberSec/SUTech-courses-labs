@@ -25,14 +25,20 @@ This project implements a complete database management system for an online purc
 ## [ ⚙ ] THE TOOLKIT (DECRYPTED)
 This project was built using modern database technologies and Java:
 
-💻 **Database**
-![MySQL](https://img.shields.io/badge/MySQL-005BA9?style=for-the-badge&logo=mysql) ![SQL](https://img.shields.io/badge-SQL-006D77?style=for-the-badge) ![Relational](https://img.shields.io/badge-Relational_DB-1289A3?style=for-the-badge)
+## 💻 Database
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-006D77?style=for-the-badge&logo=postgresql&logoColor=white)
+![Relational DB](https://img.shields.io/badge/Relational_DB-1289A3?style=for-the-badge&logo=databricks&logoColor=white)
 
-🛠️ **Development Tools**
-![Java](https://img.shields.io/badge-Java-ED8B00?style=for-the-badge&logo=java) ![JDBC](https://img.shields.io/badge-JDBC-005571?style=for-the-badge) ![Eclipse](https://img.shields.io/badge/Eclipse_IDE-2C2255?style=for-the-badge&logo=eclipse)
+## 🛠️ Development Tools
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![JDBC](https://img.shields.io/badge/JDBC-005571?style=for-the-badge&logo=java&logoColor=white)
+![Eclipse IDE](https://img.shields.io/badge/Eclipse_IDE-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white)
 
-📊 **Documentation**
-![ERD](https://img.shields.io/badge-ERD-Enabled-green?style=for-the-badge) ![Schema](https://img.shields.io/badge-Relational_Schema-Active-blue?style=for-the-badge) ![PDF](https://img.shields.io/badge-Diagrams-PDF-purple?style=for-the-badge)
+## 📊 Documentation
+![ERD](https://img.shields.io/badge/ERD-Enabled-green?style=for-the-badge)
+![Relational Schema](https://img.shields.io/badge/Relational_Schema-Active-blue?style=for-the-badge)
+![PDF Diagrams](https://img.shields.io/badge/Diagrams-PDF-purple?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)
 
 ---
 
