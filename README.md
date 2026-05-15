@@ -168,7 +168,8 @@ show mac address-table    # MAC table
 ## [ ✉ ] TRANSMIT_DATA
 > **The network speaks louder than words. Review the topology.**
 
-* **GitHub:** [Your GitHub Profile]
+* **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/paula-maged-04a721249/)
+* **Encrypted Mail:** paulamagedcyber@gmail.com
 * **Project Files:** Packet Tracer (.pkt), Documentation (.md)
 
 ---
