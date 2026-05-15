@@ -191,8 +191,8 @@ java SQLQueryGUI
 > **The database speaks louder than words. Review the schema.**
 
 * **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/paula-maged-04a721249/)
+* **Terminal:** [GitHub Portfolio](https://github.com/PM-CyberSec)
 * **Encrypted Mail:** paulamagedcyber@gmail.com
-* **Project Files:** SQL Scripts, Java GUI, Documentation (PDF)
 
 ---
 
