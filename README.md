@@ -184,8 +184,8 @@ python main.py
 > **The truth is in the logs. Analyze the evidence.**
 
 * **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/paula-maged-04a721249/)
+* **Terminal:** [GitHub Portfolio](https://github.com/PM-CyberSec)
 * **Encrypted Mail:** paulamagedcyber@gmail.com
-* **Project Files:** Laravel App, Python Detection Engine, Configuration
 
 ---
 
