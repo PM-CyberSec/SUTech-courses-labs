@@ -1,0 +1,471 @@
+:root {
+    --z-dropdown: 2000;
+    --z-modal: 3000;
+    --z-fixed: 1030;
+    --z-backdrop: 2500;
+}
+
+body.has-fixed-navbar {
+    padding-top: 3.5rem;
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, rgba(0, 255, 255, 0.12), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(138, 43, 226, 0.14), transparent 25%),
+        linear-gradient(135deg, #0a0f1f, #111827, #0f172a);
+    color: #e5f4ff;
+    min-height: 100vh;
+}
+
+/* Animated gradient background */
+/* body {
+    background: linear-gradient(-45deg, #0a0f1f, #111827, #0f172a, #1e293b);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+}
+
+/* animation */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+*/
+
+/* Glass card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+}
+
+/* Buttons */
+.btn-future {
+    background: linear-gradient(90deg, #0c8795, #140035);
+    color: white !important;
+    border: none !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-future:hover {
+    background: linear-gradient(90deg, #00e5ff, #0c8795);
+    color: #140035 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
+}
+
+.btn, .btn-sm, .btn-lg {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none;
+}
+
+.btn:focus, .btn:active {
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5) !important;
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: #00e5ff !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3) !important;
+    color: white !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.form-label {
+    color: #d6d7dd !important;
+    text-shadow: 0 0 6px rgba(139, 233, 253, 0.4);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.06) !important;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+/* ===== NAVBAR FUTURISTIC ===== */
+.navbar-future {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+    z-index: 1030;
+}
+
+/* brand */
+.navbar-future .navbar-brand {
+    color: #8be9fd !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* links */
+.navbar-future .nav-link {
+    color: #e5f4ff !important;
+    transition: 0.3s;
+}
+
+/* hover effect */
+.navbar-future .nav-link:hover {
+    color: #00e5ff !important;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+}
+
+/* active link */
+.navbar-future .nav-link.active {
+    color: #00e5ff !important;
+    position: relative;
+}
+
+/* Flashlight glow under active link */
+.navbar-future .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #38bdf8;
+    border-radius: 50%;
+    box-shadow:
+        0 0 6px rgba(56, 189, 248, 0.6),
+        0 0 12px rgba(56, 189, 248, 0.4),
+        0 0 20px rgba(56, 189, 248, 0.2);
+    animation: flashlightPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes flashlightPulse {
+    0%, 100% {
+        opacity: 0.6;
+        box-shadow:
+            0 0 6px rgba(56, 189, 248, 0.6),
+            0 0 12px rgba(56, 189, 248, 0.4),
+            0 0 20px rgba(56, 189, 248, 0.2);
+    }
+    50% {
+        opacity: 1;
+        box-shadow:
+            0 0 10px rgba(56, 189, 248, 0.8),
+            0 0 20px rgba(56, 189, 248, 0.6),
+            0 0 30px rgba(56, 189, 248, 0.3);
+    }
+}
+
+/* user badge */
+.navbar-future .badge-future {
+    background: rgba(0, 229, 255, 0.15);
+    color: #8be9fd;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+/* buttons inside navbar */
+.navbar-future .btn {
+    border-radius: 12px;
+}
+
+/* ===== SEARCH BAR ===== */
+.search-input {
+    height: 42px;
+    min-width: 420px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(0, 229, 255, 0.25) !important;
+    color: #ffffff !important;
+}
+
+.search-input:focus {
+    border-color: #00e5ff !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+/* ===== SEARCH BUTTON ===== */
+.search-btn {
+    height: 42px;
+    padding: 0 18px;
+    border-radius: 10px;
+    border: none;
+
+    background: linear-gradient(90deg, #215d64, #170c2b);
+    color: white;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+/* hover glow */
+.search-btn:hover {
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.6),
+        0 0 25px rgba(124, 58, 237, 0.4);
+    transform: translateY(-1px);
+}
+
+/* click effect */
+.search-btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+/* Purple flashing dot - bottom right corner */
+.purple-dot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: #a855f7;
+    border-radius: 50%;
+    z-index: 9999;
+    animation: purplePulse 1.2s ease-in-out infinite;
+    box-shadow:
+        0 0 8px rgba(168, 85, 247, 0.7),
+        0 0 16px rgba(168, 85, 247, 0.4),
+        0 0 30px rgba(168, 85, 247, 0.2);
+    cursor: pointer;
+}
+
+@keyframes purplePulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+        box-shadow:
+            0 0 8px rgba(168, 85, 247, 0.5),
+            0 0 16px rgba(168, 85, 247, 0.3),
+            0 0 30px rgba(168, 85, 247, 0.15);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        box-shadow:
+            0 0 14px rgba(168, 85, 247, 0.9),
+            0 0 28px rgba(168, 85, 247, 0.6),
+            0 0 45px rgba(168, 85, 247, 0.3);
+    }
+}
+
+/* Typing text effect */
+.typing-container {
+    position: fixed;
+    bottom: 22px;
+    right: 45px;
+    z-index: 9998;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #c4b5fd;
+    text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+    min-height: 1.2em;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #a855f7;
+    animation: typingBlink 0.8s step-end infinite;
+    max-width: 320px;
+}
+
+@keyframes typingBlink {
+    50% { border-color: transparent; }
+}
+
+/* Products page */
+.products-page {
+    max-width: 1100px;
+}
+
+.products-page .product-card-img {
+    width: 100%;
+    max-width: 320px;
+    max-height: 240px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+    .products-page .product-card-img {
+        max-height: 220px;
+    }
+}
+
+.products-page .product-detail-table th {
+    white-space: nowrap;
+    width: 22%;
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Glassy table cells */
+.products-page .product-detail-table th,
+.products-page .product-detail-table td {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.05),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+
+    border-radius: 0px;
+
+    padding: 12px 14px;
+
+    transition: all 0.25s ease;
+}
+
+table, .table {
+    --bs-table-bg: #0d101e82 !important;
+    background-color: #0d101e82 !important;
+}
+
+/* Hover glow */
+.products-page .product-detail-table tr:hover th,
+.products-page .product-detail-table tr:hover td {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(0, 229, 255, 0.18) !important;
+
+    box-shadow:
+        0 0 12px rgba(0, 229, 255, 0.08),
+        0 0 24px rgba(124, 58, 237, 0.06);
+}
+
+.product-detail-table {
+    border-collapse: separate !important;
+    border-spacing: 0 5px;
+}
+
+.text-cyan {
+    color: #00e5ff !important;
+}
+
+.text-purple {
+    color: #7c3aed !important;
+}
+
+.text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+/* Product Info Container */
+.info-container {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    font-size: 0.95rem;
+}
+
+.info-container .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.info-container code {
+    background: rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.text-light-50 {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* TomSelect customization for future theme */
+.ts-control,
+.dropdown,
+.select,
+.custom-select,
+.product-dropdown,
+.tags-dropdown {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    min-height: 42px;
+}
+
+.ts-wrapper.multi .ts-control>div {
+    background: #00e5ff !important;
+    color: #1a1a2e !important;
+    border-radius: 4px !important;
+    font-weight: bold;
+    padding: 2px 8px;
+    margin: 2px;
+}
+
+.ts-dropdown {
+    background: #1a1a2e !important;
+    border: 1px solid rgba(0, 229, 255, 0.3) !important;
+    color: white !important;
+    z-index: var(--z-dropdown) !important;
+    /* Ensure it renders on top */
+    border-radius: 10px;
+    margin-top: 5px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.ts-dropdown .active {
+    background: rgba(0, 229, 255, 0.2) !important;
+    color: white !important;
+}
+
+.ts-dropdown .option {
+    padding: 8px 12px;
+}
+
+.ts-control .item {
+    background: #00e5ff !important;
+    color: #1a1a2e !important;
+    border-radius: 4px !important;
+    font-weight: bold;
+}
+
+.ts-wrapper .ts-control input {
+    color: white !important;
+}
+
+/* Edit Product Modal Background */
+#editProductModal .modal-content {
+    background: #000000c7 !important;
+    backdrop-filter: blur(20px);
+}
