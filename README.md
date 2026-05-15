@@ -184,7 +184,8 @@ java SQLQueryGUI
 ## [ ✉ ] TRANSMIT_DATA
 > **The database speaks louder than words. Review the schema.**
 
-* **GitHub:** [Your GitHub Profile]
+* **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/paula-maged-04a721249/)
+* **Encrypted Mail:** paulamagedcyber@gmail.com
 * **Project Files:** SQL Scripts, Java GUI, Documentation (PDF)
 
 ---
