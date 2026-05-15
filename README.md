@@ -80,5 +80,6 @@ The system is hardened against common attack vectors using modern frameworks:
 
 * **LinkedIn:** [Paula Maged Habib](https://www.linkedin.com/in/paula-maged-04a721249/)
 * **Terminal:** [GitHub Portfolio](https://github.com/PM-CyberSec)
+* **Encrypted Mail:** paulamagedcyber@gmail.com
 
 ### > [EOF]
