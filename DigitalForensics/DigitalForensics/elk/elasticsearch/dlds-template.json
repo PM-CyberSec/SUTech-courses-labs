@@ -1,0 +1,31 @@
+{
+  "index_patterns": ["dlds-events-*"],
+  "template": {
+    "settings": {
+      "number_of_shards": 3,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "event_id": { "type": "keyword" },
+        "src_ip": { "type": "ip" },
+        "dst_ip": { "type": "ip" },
+        "src_port": { "type": "integer" },
+        "dst_port": { "type": "integer" },
+        "protocol": { "type": "keyword" },
+        "sensor": { "type": "keyword" },
+        "severity": { "type": "integer" },
+        "bytes_sent": { "type": "long" },
+        "duration": { "type": "float" },
+        "ml_label": { "type": "keyword" },
+        "ml_confidence": { "type": "float" },
+        "evidence_summary": { "type": "text" },
+        "alert_signature": { "type": "keyword" },
+        "dns_query": { "type": "keyword" },
+        "http_host": { "type": "keyword" },
+        "tls_sni": { "type": "keyword" }
+      }
+    }
+  }
+}

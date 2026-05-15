@@ -1,0 +1,23 @@
+{
+    "version": "1.0",
+    "model_type": "RandomForestClassifier",
+    "features": [
+        "src_port",
+        "dst_port",
+        "protocol_enc",
+        "bytes_sent",
+        "duration",
+        "severity",
+        "frame_length",
+        "flags_enc",
+        "dns_query_presence",
+        "http_host_presence",
+        "tls_sni_presence"
+    ],
+    "metrics": {
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+    }
+}

@@ -1,0 +1,48 @@
+name: dlds-drift-monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 * * * *"
+
+jobs:
+  detect-drift:
+    runs-on: ubuntu-latest
+    env:
+      DRIFT_BASELINE_PATH: data/datasets/baseline.csv
+      DRIFT_CURRENT_PATH: data/logs/audit_events.json
+      DRIFT_REPORT_PATH: data/output/drift_report_ci.json
+      DRIFT_MIN_SAMPLES: "500"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy
+
+      - name: Validate Input Paths
+        run: |
+          test -f "${DRIFT_BASELINE_PATH}" || (echo "Missing baseline file: ${DRIFT_BASELINE_PATH}" && exit 1)
+          test -f "${DRIFT_CURRENT_PATH}" || (echo "Missing current file: ${DRIFT_CURRENT_PATH}" && exit 1)
+
+      - name: Run Drift Monitor
+        run: |
+          python ml/drift_monitor.py \
+            --baseline "${DRIFT_BASELINE_PATH}" \
+            --current "${DRIFT_CURRENT_PATH}" \
+            --report "${DRIFT_REPORT_PATH}" \
+            --min-samples "${DRIFT_MIN_SAMPLES}"
+
+      - name: Upload Drift Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dlds-drift-report
+          path: data/output/drift_report_ci.json

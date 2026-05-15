@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: dlds-drift-monitor
+  namespace: dlds-soc
+spec:
+  schedule: "30 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: drift-monitor
+              image: ghcr.io/your-org/dlds-pipeline:latest
+              imagePullPolicy: IfNotPresent
+              command:
+                - python3
+                - ml/drift_monitor.py
+                - --baseline
+                - /data/baseline/baseline.csv
+                - --current
+                - /data/current/audit_events.json
+                - --report
+                - /data/reports/drift_report.json
+                - --min-samples
+                - "500"
+              volumeMounts:
+                - name: ops-data
+                  mountPath: /data
+          volumes:
+            - name: ops-data
+              persistentVolumeClaim:
+                claimName: dlds-ops-data

@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dlds-pipeline
+  namespace: dlds-soc
+  labels:
+    app: dlds-pipeline
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dlds-pipeline
+  template:
+    metadata:
+      labels:
+        app: dlds-pipeline
+    spec:
+      containers:
+        - name: pipeline
+          image: ghcr.io/your-org/dlds-pipeline:latest
+          imagePullPolicy: IfNotPresent
+          command: ["python3", "pipeline/main.py"]
+          envFrom:
+            - configMapRef:
+                name: dlds-env
+            - secretRef:
+                name: dlds-secrets
+          volumeMounts:
+            - name: dlds-logs
+              mountPath: /app/data/logs
+          readinessProbe:
+            exec:
+              command: ["test", "-d", "/app/data/logs"]
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "2Gi"
+        - name: filebeat-sidecar
+          image: docker.elastic.co/beats/filebeat:8.11.1
+          args: ["-e", "-strict.perms=false"]
+          volumeMounts:
+            - name: dlds-logs
+              mountPath: /usr/share/filebeat/dlds-logs
+            - name: filebeat-config
+              mountPath: /usr/share/filebeat/filebeat.yml
+              subPath: filebeat.yml
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+      volumes:
+        - name: dlds-logs
+          emptyDir: {}
+        - name: filebeat-config
+          configMap:
+            name: dlds-filebeat-config

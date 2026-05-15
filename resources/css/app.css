@@ -1,0 +1,317 @@
+@import './dlds.css';
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+
+    background:
+        radial-gradient(circle at top left, rgba(0,255,150,0.12), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(0,255,100,0.08), transparent 25%),
+        linear-gradient(135deg, #05080f, #0a0f1a, #020617);
+
+    color: #d1fae5;
+}
+
+/* neon glow accents */
+h2, h3 {
+    color: #00ff9f;
+    text-shadow: 0 0 10px rgba(0,255,150,0.4);
+}
+
+/* cards */
+.card {/* =========================================================
+    DLDS CORE THEME (Clean + Stable Base Layer)
+    Imported by app.css
+    ========================================================= */
+ 
+ /* =======================
+    GLOBAL BACKGROUND
+ ======================= */
+ body {
+     margin: 0;
+     font-family: system-ui, sans-serif;
+ 
+     background:
+         radial-gradient(circle at 20% 20%, rgba(0, 255, 140, 0.12), transparent 25%),
+         radial-gradient(circle at 80% 80%, rgba(0, 255, 100, 0.08), transparent 25%),
+         linear-gradient(135deg, #020617, #030712, #020617);
+ 
+     color: #d1fae5;
+     min-height: 100vh;
+     overflow-x: hidden;
+ }
+ 
+ /* =======================
+    LAYOUT
+ ======================= */
+ .app-container {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .layout {
+     display: flex;
+     min-height: 100vh;
+ }
+ 
+ .content {
+     flex: 1;
+     padding: 20px;
+ }
+ 
+ /* =======================
+    SIDEBAR (STABLE CORE)
+ ======================= */
+ .sidebar {
+     width: 220px;
+     min-height: 100vh;
+     padding: 20px;
+ 
+     background: rgba(0, 0, 0, 0.85);
+     border-right: 1px solid rgba(0, 255, 140, 0.2);
+ 
+     transition: width 0.3s ease;
+     overflow: hidden;
+ }
+ 
+ /* expanded state */
+ .sidebar.expanded {
+     width: 220px;
+ }
+ 
+ /* collapsed state */
+ .sidebar.collapsed {
+     width: 70px;
+ }
+ 
+ /* links */
+ .sidebar a {
+     display: block;
+     color: #86efac;
+     margin: 12px 0;
+     text-decoration: none;
+     transition: 0.2s;
+     white-space: nowrap;
+ }
+ 
+ /* hover */
+ .sidebar a:hover {
+     color: #00ff9c;
+     text-shadow: 0 0 8px rgba(0, 255, 140, 0.7);
+     transform: translateX(3px);
+ }
+ 
+ /* hide text when collapsed (safe version) */
+ .sidebar.collapsed a {
+     font-size: 0;
+ }
+ 
+ /* =======================
+    NAVBAR
+ ======================= */
+ .navbar {
+     height: 60px;
+     padding: 12px 20px;
+ 
+     background: rgba(0, 0, 0, 0.7);
+     backdrop-filter: blur(12px);
+     border-bottom: 1px solid rgba(0, 255, 140, 0.2);
+ }
+ 
+ .navbar .logo {
+     color: #00ff9c;
+     font-weight: bold;
+     letter-spacing: 1px;
+ }
+ 
+ /* =======================
+    CARDS
+ ======================= */
+ .card {
+     background: rgba(0, 0, 0, 0.6);
+     border: 1px solid rgba(0, 255, 140, 0.2);
+     backdrop-filter: blur(14px);
+     border-radius: 14px;
+     color: #d1fae5;
+     transition: 0.3s;
+ }
+ 
+ .card:hover {
+     border-color: rgba(0, 255, 140, 0.5);
+     box-shadow: 0 0 20px rgba(0, 255, 140, 0.15);
+ }
+ 
+ /* =======================
+    TABLES (FIXED ALIGNMENT ISSUE)
+ ======================= */
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     font-size: 14px;
+ }
+ 
+ th, td {
+     padding: 12px 14px;
+     border-bottom: 1px solid rgba(0, 255, 140, 0.15);
+     text-align: left;
+ }
+ 
+ th {
+     color: #00ff9c;
+     text-transform: uppercase;
+     font-size: 12px;
+     letter-spacing: 1px;
+ }
+ 
+ td {
+     color: #a7f3d0;
+ }
+ 
+ tr:hover {
+     background: rgba(0, 255, 140, 0.05);
+ }
+ 
+ /* =======================
+    SEVERITY COLORS
+ ======================= */
+ .severity-high {
+     color: #ff4d4d;
+     font-weight: bold;
+     text-shadow: 0 0 6px rgba(255, 0, 0, 0.4);
+ }
+ 
+ .severity-medium {
+     color: #facc15;
+ }
+ 
+ .severity-low {
+     color: #22c55e;
+ }
+ 
+ /* =======================
+    PARTICLES BACKGROUND
+ ======================= */
+ #particles-js {
+     position: fixed;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+     top: 0;
+     left: 0;
+     pointer-events: none;
+ }
+    background: rgba(0, 255, 150, 0.05);
+    border: 1px solid rgba(0,255,150,0.2);
+    backdrop-filter: blur(14px);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+th {
+    color: #00ff9f;
+}
+
+td {
+    color: #bbf7d0;
+    word-break: break-word;
+    max-width: 300px;
+    overflow-wrap: break-word;
+}
+
+th, td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(0,255,150,0.15);
+    text-align: left;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+/* ===== PARTICLES BACKGROUND ===== */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+/* ===== SIDEBAR ===== */
+.sidebar {
+    background: rgba(0,0,0,0.8);
+    border-right: 1px solid rgba(0,255,150,0.2);
+    height: 100vh;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar a {
+    white-space: nowrap;
+}
+
+.sidebar.collapsed a {
+    justify-content: center;
+}
+
+.sidebar {
+    outline: 2px solid rgba(0,255,150,0.2);
+}
+
+/* expanded */
+.sidebar.expanded {
+    width: 220px !important;
+}
+
+/* collapsed */
+.sidebar.collapsed {
+    width: 100px !important;
+}
+
+/* header */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* toggle button */
+#toggleBtn {
+    background: none;
+    border: none;
+    color: #00ff9f;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* hide text when collapsed */
+.sidebar.collapsed .text {
+    display: none;
+}
+
+/* content shift */
+.content {
+    flex: 1;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+/* layout */
+.layout {
+    display: flex;
+}
+
+@keyframes moveGrid {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(-50px,-50px); }
+}

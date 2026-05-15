@@ -1,0 +1,30 @@
+name: dlds-chaos-drill
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * 6"
+
+jobs:
+  weekly-chaos-drill:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate kubectl Context
+        run: |
+          kubectl version --client
+          kubectl cluster-info
+
+      - name: Run Chaos Drill
+        run: |
+          chmod +x scripts/chaos_k8s_drill.sh
+          ./scripts/chaos_k8s_drill.sh
+
+      - name: Upload Chaos Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dlds-chaos-report
+          path: data/output/chaos_report.json

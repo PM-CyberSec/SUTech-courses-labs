@@ -1,0 +1,56 @@
+name: dlds-model-retrain
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * 0"
+
+jobs:
+  retrain-and-promote:
+    runs-on: ubuntu-latest
+    env:
+      DLDS_MIN_F1: "0.90"
+      DLDS_MIN_RECALL: "0.88"
+      DLDS_MIN_PRECISION: "0.88"
+      DLDS_TRAIN_DATASET_DIR: data/datasets
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r detection-engine/requirements.txt
+
+      - name: Optional Dataset Download
+        if: ${{ secrets.DATASET_ARCHIVE_URL != '' }}
+        run: |
+          mkdir -p data/datasets
+          curl -L "${{ secrets.DATASET_ARCHIVE_URL }}" -o /tmp/dlds-datasets.tar.gz
+          tar -xzf /tmp/dlds-datasets.tar.gz -C data/datasets
+
+      - name: Validate Dataset Presence
+        run: |
+          if ! ls data/datasets/*.csv >/dev/null 2>&1; then
+            echo "No CSV files in data/datasets. Provide DATASET_ARCHIVE_URL secret or commit sanitized samples."
+            exit 1
+          fi
+
+      - name: Retrain and Promote
+        run: |
+          chmod +x scripts/retrain_and_promote_model.sh
+          ./scripts/retrain_and_promote_model.sh
+
+      - name: Upload Model Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dlds-model-release
+          path: |
+            ml/models/current
+            ml/models/model_metadata.json
+            detection-engine/models/rf_model.pkl
