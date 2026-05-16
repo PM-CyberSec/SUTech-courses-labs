@@ -1,4 +1,4 @@
-### **user@PM-CyberSec:~$ whoami --focus "Digital Forensics" --project "DLDS_v1.0"**
+### **user@DigitalForensics:~$ whoami --focus "Digital Forensics" --project "DLDS_v1.0"**
 
 # # SYSTEM_OVERRIDE: [DIGITAL_FORENSICS_LAB]
 
