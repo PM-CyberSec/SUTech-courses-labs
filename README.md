@@ -1,4 +1,4 @@
-### **user@PM-CyberSec:~$ whoami --focus "Database Management" --project "Online_Purchase_System_v1.0"**
+### **user@DBMS:~$ whoami --focus "Database Management" --project "Online_Purchase_System_v1.0"**
 
 # # SYSTEM_OVERRIDE: [ONLINE_PURCHASE_SYSTEM]
 
