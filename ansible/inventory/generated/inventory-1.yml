@@ -1,0 +1,4 @@
+all:
+  children:
+    inv_a:
+      hosts:

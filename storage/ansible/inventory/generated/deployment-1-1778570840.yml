@@ -1,0 +1,17 @@
+all:
+  hosts:
+    seed-sw01:
+      ansible_host: 10.50.50.10
+      ansible_port: 22
+      ansible_user: netops
+      ansible_network_os: ios
+      ansible_connection: network_cli
+      device_type: cisco.ios.ios
+      device_vendor: Cisco
+  children:
+    'Seed Inventory':
+      hosts:
+        - seed-sw01
+  vars:
+    ansible_python_interpreter: auto
+    ansible_fast_gather: false
