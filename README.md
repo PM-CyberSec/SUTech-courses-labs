@@ -1,10 +1,14 @@
-### **user@DigitalForensics:~$ whoami --focus "Digital Forensics" --project "DLDS_v1.0"**
+![Typing Effect](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&pause=2000&color=00FFCC&background=1E1E1E00&center=false&vCenter=true&width=1000&lines=user%40PM-CyberSec%3A~%24+whoami+--focus+%22Digital+Forensics%22+--project+%22DLDS_v1.0%22)
 
 # # SYSTEM_OVERRIDE: [DIGITAL_FORENSICS_LAB]
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230052CC.svg?style=for-the-badge&logo=linkedin&logoColor=00FFCC)](https://www.linkedin.com/in/paula-maged-04a721249)
+[![Gmail](https://img.shields.io/badge/Encrypted_Mail-0052CC?style=for-the-badge&logo=gmail&logoColor=00FFCC)](mailto:paulamagedcyber@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-%230052CC.svg?style=for-the-badge&logo=github&logoColor=00FFCC)](https://pm-cybersec.github.io/portfolio-site)
+[![Branch](https://img.shields.io/badge/BRANCH-DigitalForensics-00FFCC?style=for-the-badge&logo=git&logoColor=0052CC)](https://github.com/PM-CyberSec/SUTech-courses-labs/tree/DigitalForensics)
 
-![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-39FF14?style=for-the-badge&logo=shield)
-![Stack](https://img.shields.io/badge/STACK-PHP_JS_Python-005571?style=for-the-badge&logo=php)
-![Environment](https://img.shields.io/badge/ENV-Development-orange?style=for-the-badge&logo=linux&logoColor=white)
+![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-00FFCC?style=for-the-badge&logo=shield&logoColor=0052CC)
+![Laravel](https://img.shields.io/badge/Laravel-0052CC?style=for-the-badge&logo=laravel&logoColor=white)
+![Python](https://img.shields.io/badge/Python-001F4D?style=for-the-badge&logo=python&logoColor=00FFCC)
 
 ### > Welcome, friend.
 ### > You are accessing the Digital Forensics & Detection System.
@@ -25,24 +29,29 @@ This project implements a comprehensive digital forensics and threat detection s
 ## [ ⚙ ] THE TOOLKIT (DECRYPTED)
 This project was built using modern cybersecurity technologies:
 
-## 💻 Backend
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
-## 🛡️ Detection Tools
-![Zeek](https://img.shields.io/badge/Zeek-0088CC?style=for-the-badge)
-![Suricata](https://img.shields.io/badge/Suricata-E94F28?style=for-the-badge)![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
-![Python Scripts](https://img.shields.io/badge/Python_Scripts-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
-## 📊 Frontend
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+{<br>
+  "💻 Backend": [
+    ![PHP](https://img.shields.io/badge/PHP-001F4D?style=flat-square&logo=php&logoColor=00FFCC),
+    ![Laravel](https://img.shields.io/badge/Laravel-001F4D?style=flat-square&logo=laravel&logoColor=00FFCC),
+    ![Python](https://img.shields.io/badge/Python-001F4D?style=flat-square&logo=python&logoColor=00FFCC)
+  ],
+<br>
+  "🛡️ Detection": [
+    ![Zeek](https://img.shields.io/badge/Zeek-001F4D?style=flat-square&logoColor=00FFCC),
+    ![Suricata](https://img.shields.io/badge/Suricata-001F4D?style=flat-square&logo=suricata&logoColor=00FFCC),
+    ![Wireshark](https://img.shields.io/badge/Wireshark-001F4D?style=flat-square&logo=wireshark&logoColor=00FFCC)
+  ],
+<br>
+  "⬢ Frontend": [
+    ![JavaScript](https://img.shields.io/badge/JavaScript-001F4D?style=flat-square&logo=javascript&logoColor=00FFCC),
+    ![React](https://img.shields.io/badge/React-001F4D?style=flat-square&logo=react&logoColor=00FFCC),
+    ![Vite](https://img.shields.io/badge/Vite-001F4D?style=flat-square&logo=vite&logoColor=00FFCC)
+  ]<br>
+}
 
 ---
 
-## [ 🛡️ ] LOG_02: DEFENSIVE ARCHITECTURE
+## [ 🛡️ ] LOG_02: DEFENSIVE_ARCHITECTURE
 The system is designed with multiple layers of security monitoring:
 
 * **{**
@@ -54,85 +63,78 @@ The system is designed with multiple layers of security monitoring:
 
 ---
 
-## [ 💾 ] LOG_03: SYSTEM MODULES
+## [ 💾 ] LOG_03: SYSTEM_MODULES
 
-#### 🌐 [NETWORK] > Network Monitor
+#### 🌐 [NETWORK] > [Network Monitor]
 > Monitors network traffic using Zeek and Suricata.
 > Parses eve.json logs, detects anomalies, maps network topology.
 
-#### ⚙️ [PROCESS] > Process Monitor
+#### ⚙️ [PROCESS] > [Process Monitor]
 > Tracks system processes in real-time.
 > Monitors process creation, termination, and suspicious behavior.
 
-#### 🔔 [ALERTS] > Alert System
+#### 🔔 [ALERTS] > [Alert System]
 > Manages security alerts with severity levels.
 > Correlates events from multiple sources.
 
-#### 📊 [EVENTS] > Event Ingestion
+#### 📊 [EVENTS] > [Event Ingestion]
 > Ingests and stores security events.
 > Provides query and analysis capabilities.
 
 ---
 
-## [ 📊 ] LOG_04: PROJECT STRUCTURE
+## [ 📊 ] LOG_04: REPOSITORY_STRUCTURE
 
-### Main Application (Laravel)
 ```
+DigitalForensics/
+│
 ├── app/                    # Laravel application
 │   ├── Http/Controllers/  # API Controllers
-│   ├── Models/             # Database models
-│   ├── Services/           # Business logic
-│   └── Events/             # Event classes
-├── routes/                 # API routes
-├── resources/              # Frontend assets
-├── database/               # Migrations
-└── storage/                # Logs & cache
-```
-
-### Detection Engine (Python)
-```
-├── detection-engine/
-│   ├── main.py             # Main entry point
-│   ├── correlator.py       # Event correlation
-│   ├── parser_zeek.py      # Zeek log parser
-│   ├── suricata_stream.py  # Suricata parser
+│   ├── Models/            # Database models
+│   └── Services/          # Business logic
+│
+├── detection-engine/      # Python detection system
+│   ├── main.py            # Entry point
+│   ├── correlator.py      # Event correlation
+│   ├── parser_zeek.py     # Zeek log parser
+│   ├── suricata_stream.py # Suricata parser
 │   ├── process_monitor.py # Process tracking
-│   ├── net_mapper.py       # Network mapping
-│   └── rules.py            # Detection rules
+│   └── rules.py           # Detection rules
+│
+├── database/              # Migrations & seeders
+├── routes/                # API routes
+└── resources/             # Frontend assets
 ```
 
 ---
 
-## [ ⚙ ] LOG_05: PROJECT FILES
+## [ ⚙ ] LOG_05: INSTALLATION_AND_EXECUTION
 
-### Core Files
-| File | Description |
-|------|-------------|
-| `artisan` | Laravel CLI |
-| `composer.json` | PHP dependencies |
-| `package.json` | JS dependencies |
-| `.env.example` | Environment template |
+### Web Application
+```bash
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
 
 ### Detection Engine
-| File | Description |
-|------|-------------|
-| `main.py` | Main detection script |
-| `correlator.py` | Event correlation engine |
-| `parser_zeek.py` | Zeek log parser |
-| `rules.py` | Detection rules |
+```bash
+cd detection-engine
+pip install -r requirements.txt
+python main.py
+```
 
-### Configuration
-| File | Description |
-|------|-------------|
-| `composer.lock` | PHP lock file |
-| `package-lock.json` | JS lock file |
-| `phpunit.xml` | Test configuration |
+### Start Services
+```bash
+bash detection-engine/run_services.sh
+```
 
 ---
 
-## [ 🔍 ] LOG_06: DETECTION RULES
-
-The system includes detection rules for:
+## [ 🔍 ] LOG_06: DETECTION_RULES
 
 ```python
 # Network Anomalies
@@ -153,40 +155,15 @@ The system includes detection rules for:
 
 ---
 
-## [ ⌬ ] SYSTEM_ACCESS
-
-* **Step 01 ->** `git clone <repo-url>`
-* **Step 02 ->** `composer install` (PHP dependencies)
-* **Step 03 ->** `npm install` (JS dependencies)
-* **Step 04 ->** Copy `.env.example` to `.env`
-* **Step 05 ->** `php artisan migrate` (Database setup)
-* **Step 06 ->** `php artisan serve` (Start web server)
-
-### Detection Engine Setup
-```bash
-cd detection-engine
-pip install -r requirements.txt
-python main.py
-```
-
-### Start Services
-```bash
-# Start Zeek
-bash run_services.sh
-
-# Start Detection Engine
-python main.py
-```
-
----
-
 ## [ ✉ ] TRANSMIT_DATA
 > **The truth is in the logs. Analyze the evidence.**
 
-* **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/paula-maged-04a721249/)
-* **Terminal:** [GitHub Portfolio](https://github.com/PM-CyberSec)
-* **Encrypted Mail:** paulamagedcyber@gmail.com
+* **LinkedIn:** [paula-maged](https://www.linkedin.com/in/paula-maged-04a721249/)
+* **Encrypted Mail:** [paulamagedcyber@gmail.com](mailto:paulamagedcyber@gmail.com)
+* **Portfolio:** [pm-cybersec.github.io](https://pm-cybersec.github.io/portfolio-site)
+* **Org:** IEEE Student Branch (Tech & R&D)
 
 ---
 
+### > Goodbye, friend.
 ### > [EOF]
