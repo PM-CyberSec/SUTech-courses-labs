@@ -1,0 +1,17 @@
+# Logs
+*.log
+
+# Runtime artifacts
+server/server.pid
+__pycache__/
+*.pyc
+
+# User data / received files
+downloads/
+
+# Demo secrets
+demo_secret.txt
+
+# OS files
+.DS_Store
+Thumbs.db
