@@ -1,0 +1,104 @@
+---
+- name: Full Network Deployment
+  hosts: all
+  gather_facts: false
+  vars:
+    deployment_id: "{{ deployment_id | default(0) }}"
+    simulation_mode: "{{ simulation_mode | default(false) }}"
+  tasks:
+    - name: Load variables from deployment
+      ansible.builtin.set_fact:
+        vlan_id: "{{ vlan_id | default(100) }}"
+        vlan_name: "{{ vlan_name | default('AUTO_VLAN') }}"
+        interface_name: "{{ interface_name | default('GigabitEthernet0/1') }}"
+        interface_description: "{{ interface_description | default('Configured by AutoConfigLab') }}"
+        routing_protocol: "{{ routing_protocol | default('none') }}"
+
+    - name: Pre-deployment validation
+      cisco.ios.ios_command:
+        commands:
+          - "show version"
+      register: pre_deployment_check
+      failed_when: false
+
+    - name: Configure VLANs when vlan_id is defined
+      when: vlan_id is defined and vlan_id | int > 0
+      block:
+        - name: Validate VLAN state before deployment
+          cisco.ios.ios_command:
+            commands:
+              - "show vlan id {{ vlan_id }}"
+          register: precheck_vlan
+          failed_when: false
+
+        - name: Configure VLAN
+          cisco.ios.ios_config:
+            lines:
+              - "name {{ vlan_name }}"
+            parents:
+              - "vlan {{ vlan_id }}"
+          register: vlan_apply
+
+        - name: Validate VLAN state after deployment
+          cisco.ios.ios_command:
+            commands:
+              - "show vlan id {{ vlan_id }}"
+          register: postcheck_vlan
+
+    - name: Configure interfaces when interface_name is defined
+      when: interface_name is defined
+      block:
+        - name: Validate interface state before deployment
+          cisco.ios.ios_command:
+            commands:
+              - "show running-config interface {{ interface_name }}"
+          register: precheck_interface
+
+        - name: Apply interface configuration
+          cisco.ios.ios_config:
+            lines:
+              - "description {{ interface_description }}"
+              - "no shutdown"
+            parents:
+              - "interface {{ interface_name }}"
+          register: interface_apply
+
+        - name: Validate interface state after deployment
+          cisco.ios.ios_command:
+            commands:
+              - "show running-config interface {{ interface_name }}"
+          register: postcheck_interface
+
+    - name: Configure routing when routing_protocol is defined
+      when: routing_protocol is defined and routing_protocol != 'none'
+      block:
+        - name: Configure static routes
+          when: routing_protocol == 'static'
+          cisco.ios.ios_config:
+            lines:
+              - "ip route {{ static_route_network }} {{ static_route_mask }} {{ static_route_next_hop }}"
+          register: static_route_apply
+
+        - name: Configure OSPF routing
+          when: routing_protocol == 'ospf'
+          cisco.ios.ios_config:
+            lines:
+              - "router ospf {{ ospf_process_id | default(1) }}"
+              - " network {{ ospf_network }} {{ ospf_wildcard }} area {{ ospf_area | default(0) }}"
+          register: ospf_apply
+
+    - name: Post-deployment verification
+      cisco.ios.ios_command:
+        commands:
+          - "show running-config | section interface"
+          - "show vlan"
+      register: post_deployment_check
+      failed_when: false
+
+    - name: Display deployment summary
+      ansible.builtin.debug:
+        msg:
+          - "Deployment completed for {{ inventory_hostname }}"
+          - "VLAN ID: {{ vlan_id }}"
+          - "Interface: {{ interface_name }}"
+          - "Routing: {{ routing_protocol }}"

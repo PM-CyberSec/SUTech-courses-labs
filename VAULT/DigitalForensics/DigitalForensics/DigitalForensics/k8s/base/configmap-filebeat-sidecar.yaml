@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dlds-filebeat-config
+  namespace: dlds-soc
+data:
+  filebeat.yml: |
+    filebeat.inputs:
+      - type: filestream
+        id: dlds-sidecar-json
+        enabled: true
+        paths:
+          - /usr/share/filebeat/dlds-logs/*.json
+        parsers:
+          - ndjson:
+              target: ""
+              add_error_key: true
+
+    queue.disk:
+      path: /usr/share/filebeat/data/diskqueue
+      max_size: 10GB
+      segment_size: 1GB
+
+    processors:
+      - fingerprint:
+          fields:
+            - timestamp
+            - sensor
+            - src_ip
+            - src_port
+            - dst_ip
+            - dst_port
+            - protocol
+            - alert_signature
+            - bytes_sent
+          method: sha256
+          target_field: event_id
+          ignore_missing: true
+
+    output.kafka:
+      hosts: ["kafka-1.kafka.svc.cluster.local:9092", "kafka-2.kafka.svc.cluster.local:9092", "kafka-3.kafka.svc.cluster.local:9092"]
+      topic: "dlds.raw.telemetry"
+      required_acks: -1
+      compression: lz4

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "baseline_smoke_low_rate",
+    "pcap": "data/pcaps/sample_normal.pcapng",
+    "loop": 2,
+    "pps": 1200
+  },
+  {
+    "name": "baseline_smoke_medium_rate",
+    "pcap": "data/pcaps/sample_normal.pcapng",
+    "loop": 2,
+    "pps": 3000
+  },
+  {
+    "name": "baseline_smoke_high_rate",
+    "pcap": "data/pcaps/sample_normal.pcapng",
+    "loop": 2,
+    "pps": 6000
+  }
+]

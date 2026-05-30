@@ -1,0 +1,44 @@
+---
+- name: Configure interface on network devices
+  hosts: all
+  gather_facts: false
+  vars:
+    interface_name: "{{ interface_name | default('GigabitEthernet0/1') }}"
+    interface_description: "{{ interface_description | default('Configured by AutoConfigLab') }}"
+    access_vlan: "{{ access_vlan | default(10) }}"
+    config_path: "{{ config_path | default('') }}"
+  tasks:
+    - name: Validate state before deployment
+      cisco.ios.ios_command:
+        commands:
+          - "show running-config interface {{ interface_name }}"
+      register: precheck_output
+
+    - name: Apply rendered configuration file when provided
+      cisco.ios.ios_config:
+        src: "{{ config_path }}"
+      when: config_path | length > 0
+      register: apply_result_from_file
+
+    - name: Apply inline interface configuration as fallback
+      cisco.ios.ios_config:
+        lines:
+          - "description {{ interface_description }}"
+          - "switchport mode access"
+          - "switchport access vlan {{ access_vlan }}"
+          - "no shutdown"
+        parents:
+          - "interface {{ interface_name }}"
+      when: config_path | length == 0
+      register: apply_result_inline
+
+    - name: Validate state after deployment
+      cisco.ios.ios_command:
+        commands:
+          - "show running-config interface {{ interface_name }}"
+      register: postcheck_output
+
+    - name: Idempotency hint
+      ansible.builtin.debug:
+        msg:
+          - "Run this playbook repeatedly; changed=0 indicates idempotency."

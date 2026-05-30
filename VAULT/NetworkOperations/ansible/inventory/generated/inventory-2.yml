@@ -1,0 +1,22 @@
+all:
+  children:
+    branch_routers:
+      hosts:
+        branch-rtr01:
+          ansible_host: '10.0.1.11'
+          ansible_user: 'netops'
+          ansible_password: 'ChangeMe123!'
+          ansible_become_password: 'ChangeMe123!'
+          ansible_connection: 'network_cli'
+          ansible_network_os: 'cisco.ios.ios'
+          ansible_port: 22
+          interface_name: 'GigabitEthernet0/1'
+          interface_description: 'AutoConfigLab managed port'
+          access_vlan: 20
+          vlan_id: 20
+          vlan_name: 'USERS'
+          destination_cidr: '172.16.10.0 255.255.255.0'
+          next_hop: '10.0.0.1'
+      vars:
+        ansible_connection: 'network_cli'
+        ansible_become: true

@@ -1,0 +1,92 @@
+---
+- name: Configure SNMP on network devices
+  hosts: all
+  gather_facts: false
+  vars:
+    snmp_version: "{{ snmp_version | default('2c') }}"
+    snmp_community: "{{ snmp_community | default('public') }}"
+    snmp_location: "{{ snmp_location | default('AutoConfigLab Managed') }}"
+    snmp_contact: "{{ snmp_contact | default('admin@example.com') }}"
+    snmp_trap_server: "{{ snmp_trap_server | default('') }}"
+    snmp_trap_community: "{{ snmp_trap_community | default('public') }}"
+    snmp_trap_version: "{{ snmp_trap_version | default('2c') }}"
+    snmp_enable_traps: "{{ snmp_enable_traps | default([]) }}"
+  tasks:
+    - name: Validate SNMP state before configuration
+      cisco.ios.ios_command:
+        commands:
+          - "show snmp"
+      register: precheck_snmp
+      failed_when: false
+
+    - name: Configure SNMP community string
+      when: snmp_version == '2c' or snmp_version == 'v2c'
+      cisco.ios.ios_config:
+        lines:
+          - "snmp-server community {{ snmp_community }} ro"
+          - "snmp-server community {{ snmp_community }} rw"
+      register: snmp_community_config
+
+    - name: Configure SNMPv3 username and authentication
+      when: snmp_version == 'v3'
+      block:
+        - name: Configure SNMPv3 group
+          cisco.ios.ios_config:
+            lines:
+              - "snmp-server group SNMPv3Group v3 priv"
+
+        - name: Configure SNMPv3 user
+          cisco.ios.ios_config:
+            lines:
+              - "snmp-server user SNMPUser SNMPv3Group v3 auth sha {{ snmp_auth_password }} priv aes 128 {{ snmp_priv_password }}"
+      register: snmp_v3_config
+
+    - name: Configure SNMP location and contact
+      cisco.ios.ios_config:
+        lines:
+          - "snmp-server location {{ snmp_location }}"
+          - "snmp-server contact {{ snmp_contact }}"
+      register: snmp_location_config
+
+    - name: Configure SNMP traps
+      when: snmp_trap_server | length > 0
+      block:
+        - name: Configure SNMP trap server
+          cisco.ios.ios_config:
+            lines:
+              - "snmp-server host {{ snmp_trap_server }} version {{ snmp_trap_version }} {{ snmp_trap_community }}"
+
+        - name: Enable SNMP trap notifications
+          when: snmp_enable_traps | length > 0
+          cisco.ios.ios_config:
+            lines: "{{ snmp_enable_traps }}"
+          loop: "{{ snmp_enable_traps }}"
+      register: snmp_trap_config
+
+    - name: Configure SNMP interface polling
+      cisco.ios.ios_config:
+        lines:
+          - "snmp-server ifindex persist"
+      register: snmp_ifindex_config
+
+    - name: Validate SNMP state after configuration
+      cisco.ios.ios_command:
+        commands:
+          - "show snmp"
+      register: postcheck_snmp
+
+    - name: Test SNMP connectivity
+      when: snmp_trap_server | length == 0
+      cisco.ios.ios_command:
+        commands:
+          - "snmp walk 127.0.0.1 public 2c"
+      register: snmp_test
+      failed_when: false
+
+    - name: Display SNMP configuration summary
+      ansible.builtin.debug:
+        msg:
+          - "SNMP configuration completed for {{ inventory_hostname }}"
+          - "SNMP Version: {{ snmp_version }}"
+          - "Location: {{ snmp_location }}"
+          - "Contact: {{ snmp_contact }}"

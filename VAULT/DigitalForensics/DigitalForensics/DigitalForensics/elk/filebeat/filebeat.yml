@@ -1,0 +1,40 @@
+filebeat.inputs:
+- type: filestream
+  id: dlds-json-logs-local
+  enabled: true
+  paths:
+    - /usr/share/filebeat/logs/*.json
+  parsers:
+    - ndjson:
+        target: ""
+        add_error_key: true
+
+queue.disk:
+  path: /usr/share/filebeat/data/diskqueue
+  max_size: 10GB
+  segment_size: 1GB
+
+processors:
+  - fingerprint:
+      fields:
+        - timestamp
+        - sensor
+        - src_ip
+        - src_port
+        - dst_ip
+        - dst_port
+        - protocol
+        - alert_signature
+        - bytes_sent
+      method: sha256
+      target_field: event_id
+      ignore_missing: true
+
+output.kafka:
+  hosts: ["kafka-1:9092", "kafka-2:9092", "kafka-3:9092"]
+  topic: "dlds.raw.telemetry"
+  required_acks: -1
+  compression: lz4
+  max_message_bytes: 2000000
+
+logging.level: warning

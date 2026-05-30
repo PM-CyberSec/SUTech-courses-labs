@@ -1,0 +1,33 @@
+---
+- name: Configure VLAN on network devices
+  hosts: all
+  gather_facts: false
+  vars:
+    vlan_id: "{{ vlan_id | default(100) }}"
+    vlan_name: "{{ vlan_name | default('AUTO_VLAN') }}"
+  tasks:
+    - name: Validate VLAN state before deployment
+      cisco.ios.ios_command:
+        commands:
+          - "show vlan id {{ vlan_id }}"
+      register: precheck_vlan
+      failed_when: false
+
+    - name: Configure VLAN
+      cisco.ios.ios_config:
+        lines:
+          - "name {{ vlan_name }}"
+        parents:
+          - "vlan {{ vlan_id }}"
+      register: vlan_apply
+
+    - name: Validate VLAN state after deployment
+      cisco.ios.ios_command:
+        commands:
+          - "show vlan id {{ vlan_id }}"
+      register: postcheck_vlan
+
+    - name: Idempotency hint
+      ansible.builtin.debug:
+        msg:
+          - "Repeated run should report changed=0 once VLAN converges."

@@ -84,6 +84,17 @@ The vault spans six core domains of applied computer science and cybersecurity:
 
 ---
 
+## [ ⟁ ] LOG_01.5: TELEMETRY_MIRROR
+
+The [`VAULT/`](./VAULT/) directory is a **flat mirror** of all branches, consolidated for tooling compatibility. Language servers, dependency scanners, and CI telemetry can index every project in a single checkout without branch switching.
+
+* $ **MIRROR_SOURCE=** Each subfolder corresponds to a branch of the same name.
+* $ **AUTHORITATIVE_SOURCE=** Branches remain the single source of truth.
+* $ **TELEMETRY_PURPOSE=** Enables cross-project analysis, dependency graphs, and IDE indexing.
+* $ **SYNC_POLICY=** `VAULT/` is updated when new branches are added or existing branches are updated.
+
+---
+
 ## [ ⌬ ] ACCESS_PROTOCOLS
 
 * **Step 01 ->** `git clone https://github.com/PM-CyberSec/SUTech-courses-labs.git`

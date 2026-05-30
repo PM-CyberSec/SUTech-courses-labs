@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dlds-env
+  namespace: dlds-soc
+data:
+  PIPELINE_KAFKA_ENABLED: "true"
+  PIPELINE_KAFKA_TOPIC: "dlds.enriched"
+  PIPELINE_KAFKA_BOOTSTRAP_SERVERS: "kafka-1.kafka.svc.cluster.local:9092,kafka-2.kafka.svc.cluster.local:9092,kafka-3.kafka.svc.cluster.local:9092"
+  ZEEK_LOG_PATH: "/app/data/logs/zeek_offline/conn.log"
+  SURICATA_LOG_PATH: "/app/data/logs/suricata_offline/eve.json"
+  LOCAL_LOG_DIR: "/app/data/logs"
+  DLDS_ALLOW_MOCK_MODEL: "false"

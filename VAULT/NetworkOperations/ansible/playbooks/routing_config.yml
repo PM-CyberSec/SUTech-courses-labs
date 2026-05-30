@@ -1,0 +1,158 @@
+---
+- name: Configure routing on network devices
+  hosts: all
+  gather_facts: false
+  vars:
+    routing_protocol: "{{ routing_protocol | default('static') }}"
+    destination_cidr: "{{ destination_cidr | default('10.10.10.0 255.255.255.0') }}"
+    next_hop: "{{ next_hop | default('192.168.1.1') }}"
+    route_distance: "{{ route_distance | default(1) }}"
+    ospf_process_id: "{{ ospf_process_id | default(1) }}"
+    ospf_area: "{{ ospf_area | default(0) }}"
+    ospf_network: "{{ ospf_network | default('0.0.0.0') }}"
+    ospf_wildcard: "{{ ospf_wildcard | default('255.255.255.255') }}"
+    eigrp_asn: "{{ eigrp_asn | default(1) }}"
+    bgp_asn: "{{ bgp_asn | default(65001) }}"
+  tasks:
+    - name: Validate current routing configuration
+      cisco.ios.ios_command:
+        commands:
+          - "show ip route summary"
+      register: precheck_routing
+      failed_when: false
+
+    - name: Configure static route
+      when: routing_protocol == 'static'
+      block:
+        - name: Check existing static routes
+          cisco.ios.ios_command:
+            commands:
+              - "show running-config | include ^ip route"
+          register: precheck_static_route
+          failed_when: false
+
+        - name: Configure static route
+          cisco.ios.ios_config:
+            lines:
+              - "ip route {{ destination_cidr }} {{ next_hop }} {{ route_distance }}"
+          register: static_route_apply
+
+        - name: Verify static route configuration
+          cisco.ios.ios_command:
+            commands:
+              - "show ip route {{ destination_cidr.split(' ')[0] }}"
+          register: postcheck_static_route
+
+    - name: Configure OSPF routing
+      when: routing_protocol == 'ospf'
+      block:
+        - name: Check existing OSPF configuration
+          cisco.ios.ios_command:
+            commands:
+              - "show running-config | include ^router ospf"
+          register: precheck_ospf
+          failed_when: false
+
+        - name: Configure OSPF process
+          cisco.ios.ios_config:
+            lines:
+              - "router ospf {{ ospf_process_id }}"
+            parents:
+              - "router ospf {{ ospf_process_id }}"
+          register: ospf_process_config
+
+        - name: Configure OSPF network
+          cisco.ios.ios_config:
+            lines:
+              - "network {{ ospf_network }} {{ ospf_wildcard }} area {{ ospf_area }}"
+            parents:
+              - "router ospf {{ ospf_process_id }}"
+          register: ospf_network_config
+
+        - name: Configure OSPF passive interface
+          when: passive_interface is defined
+          cisco.ios.ios_config:
+            lines:
+              - "passive-interface {{ passive_interface }}"
+            parents:
+              - "router ospf {{ ospf_process_id }}"
+          register: ospf_passive_config
+
+        - name: Verify OSPF neighbors
+          cisco.ios.ios_command:
+            commands:
+              - "show ip ospf neighbor"
+          register: postcheck_ospf
+
+    - name: Configure EIGRP routing
+      when: routing_protocol == 'eigrp'
+      block:
+        - name: Check existing EIGRP configuration
+          cisco.ios.ios_command:
+            commands:
+              - "show running-config | include ^router eigrp"
+          register: precheck_eigrp
+          failed_when: false
+
+        - name: Configure EIGRP AS
+          cisco.ios.ios_config:
+            lines:
+              - "router eigrp {{ eigrp_asn }}"
+            parents:
+              - "router eigrp {{ eigrp_asn }}"
+          register: eigrp_as_config
+
+        - name: Configure EIGRP network
+          when: eigrp_network is defined
+          cisco.ios.ios_config:
+            lines:
+              - "network {{ eigrp_network }}"
+            parents:
+              - "router eigrp {{ eigrp_asn }}"
+          register: eigrp_network_config
+
+        - name: Verify EIGRP neighbors
+          cisco.ios.ios_command:
+            commands:
+              - "show ip eigrp neighbors"
+          register: postcheck_eigrp
+
+    - name: Configure BGP routing
+      when: routing_protocol == 'bgp'
+      block:
+        - name: Check existing BGP configuration
+          cisco.ios.ios_command:
+            commands:
+              - "show running-config | include ^router bgp"
+          register: precheck_bgp
+          failed_when: false
+
+        - name: Configure BGP AS
+          cisco.ios.ios_config:
+            lines:
+              - "router bgp {{ bgp_asn }}"
+            parents:
+              - "router bgp {{ bgp_asn }}"
+          register: bgp_as_config
+
+        - name: Configure BGP neighbor
+          when: bgp_neighbor is defined
+          cisco.ios.ios_config:
+            lines:
+              - "neighbor {{ bgp_neighbor }} remote-as {{ bgp_neighbor_as }}"
+            parents:
+              - "router bgp {{ bgp_asn }}"
+          register: bgp_neighbor_config
+
+        - name: Verify BGP neighbors
+          cisco.ios.ios_command:
+            commands:
+              - "show ip bgp summary"
+          register: postcheck_bgp
+
+    - name: Display routing configuration summary
+      ansible.builtin.debug:
+        msg:
+          - "Routing configuration completed for {{ inventory_hostname }}"
+          - "Protocol: {{ routing_protocol }}"
+          - "Process/AS: {{ (routing_protocol == 'ospf') | ternary(ospf_process_id, (routing_protocol == 'eigrp') | ternary(eigrp_asn, (routing_protocol == 'bgp') | ternary(bgp_asn, 'N/A'))) }}"

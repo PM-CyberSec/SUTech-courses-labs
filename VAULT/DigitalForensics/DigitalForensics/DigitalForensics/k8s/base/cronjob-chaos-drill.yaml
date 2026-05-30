@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: dlds-weekly-chaos-drill
+  namespace: dlds-soc
+spec:
+  schedule: "0 4 * * 6"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: dlds-chaos-runner
+          restartPolicy: Never
+          containers:
+            - name: chaos-restart-logstash
+              image: bitnami/kubectl:1.30
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -e
+                  kubectl -n dlds-soc rollout restart deployment/logstash
+                  kubectl -n dlds-soc rollout status deployment/logstash --timeout=240s

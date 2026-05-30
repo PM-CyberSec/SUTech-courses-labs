@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dlds-logstash-config
+  namespace: dlds-soc
+data:
+  logstash.yml: |
+    http.host: "0.0.0.0"
+    queue.type: persisted
+    queue.max_bytes: 8gb
+    queue.checkpoint.writes: 1024
+    dead_letter_queue.enable: true
+    pipeline.ordered: auto

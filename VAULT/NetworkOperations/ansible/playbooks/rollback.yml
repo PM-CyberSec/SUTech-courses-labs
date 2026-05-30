@@ -1,0 +1,41 @@
+---
+- name: Rollback network configuration
+  hosts: all
+  gather_facts: false
+  vars:
+    rollback_config_path: "{{ rollback_config_path | default('') }}"
+    rollback_interface: "{{ rollback_interface | default('GigabitEthernet0/1') }}"
+    rollback_vlan_id: "{{ rollback_vlan_id | default(0) }}"
+  tasks:
+    - name: Validate state before rollback
+      cisco.ios.ios_command:
+        commands:
+          - "show running-config interface {{ rollback_interface }}"
+      register: rollback_precheck
+      failed_when: false
+
+    - name: Rollback from backup config file
+      cisco.ios.ios_config:
+        src: "{{ rollback_config_path }}"
+      when: rollback_config_path | length > 0
+      register: rollback_from_file
+
+    - name: Fallback rollback when no backup file is supplied
+      cisco.ios.ios_config:
+        lines:
+          - "default interface {{ rollback_interface }}"
+      when: rollback_config_path | length == 0
+      register: rollback_inline
+
+    - name: Optionally remove VLAN during rollback
+      cisco.ios.ios_config:
+        lines:
+          - "no vlan {{ rollback_vlan_id }}"
+      when: rollback_vlan_id | int > 0
+      register: rollback_vlan_cleanup
+
+    - name: Validate state after rollback
+      cisco.ios.ios_command:
+        commands:
+          - "show running-config interface {{ rollback_interface }}"
+      register: rollback_postcheck
