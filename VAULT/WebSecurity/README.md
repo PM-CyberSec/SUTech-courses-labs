@@ -1,111 +1,93 @@
-![Typing Effect](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&pause=2000&color=00FFCC&background=1E1E1E00&center=false&vCenter=true&width=1000&lines=user%40PM-CyberSec%3A~%24+whoami+--focus+%22Product+Management+Security%22+--project+%22Inventory_Vault_v1.0%22)
+![Typing Effect](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&pause=2000&color=00FFCC&background=1E1E1E00&center=false&vCenter=true&width=1000&lines=Web+Security+%7C+Secure+Product+Management;Laravel+11+%E2%80%A2+PHP+8.2+%E2%80%A2+OWASP)
 
-# # SYSTEM_OVERRIDE: [PRODUCT_MANAGEMENT_VAULT]
+# Inventory Vault — Secure Product Management System
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230052CC.svg?style=for-the-badge&logo=linkedin&logoColor=00FFCC)](https://www.linkedin.com/in/paula-maged-04a721249)
-[![Gmail](https://img.shields.io/badge/Encrypted_Mail-0052CC?style=for-the-badge&logo=gmail&logoColor=00FFCC)](mailto:paulamagedcyber@gmail.com)
+[![Gmail](https://img.shields.io/badge/Email-0052CC?style=for-the-badge&logo=gmail&logoColor=00FFCC)](mailto:paulamagedcyber@gmail.com)
 [![Portfolio](https://img.shields.io/badge/Portfolio-%230052CC.svg?style=for-the-badge&logo=github&logoColor=00FFCC)](https://pm-cybersec.github.io/portfolio-site)
 [![Branch](https://img.shields.io/badge/BRANCH-WebSecurity-00FFCC?style=for-the-badge&logo=git&logoColor=0052CC)](https://github.com/PM-CyberSec/SUTech-courses-labs/tree/WebSecurity)
 
-![Status](https://img.shields.io/badge/STATUS-PROTECTED-00FFCC?style=for-the-badge&logo=target&logoColor=0052CC)
+![Status](https://img.shields.io/badge/STATUS-COMPLETE-00FFCC?style=for-the-badge&logo=target&logoColor=0052CC)
 ![Laravel](https://img.shields.io/badge/Laravel_11-0052CC?style=for-the-badge&logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP_8.2-001F4D?style=for-the-badge&logo=php&logoColor=00FFCC)
 
-### > Welcome, friend.
-### > You are accessing the Product Management Secure Sandbox.
+---
+
+## Overview
+Secure product and asset management application built with Laravel 11 and PHP 8.2. Implements OWASP-aligned controls, robust input validation, and relational data integrity with a modern responsive interface.
+
+* **Project:** Inventory Vault v1.0
+* **Framework:** Laravel 11 / PHP 8.2
+* **Database:** MySQL with migration-based schema
+* **Security Focus:** CSRF, SQL injection prevention, XSS mitigation, access control
 
 ---
 
-## [ ⟁ ] LOG_01: THE OBJECTIVE
-In a world of chaotic data, structure is the only defense. This application is a secure vault for managing enterprise assets with a cosmic glassmorphism UI.
+## Technical Stack
 
-* $ **CODE_NAME=** Inventory_Vault
-* $ **CORE_ENGINE=** Laravel 11 / PHP 8.2
-* $ **DATABASE_LAYER=** MySQL (Relational Integrity)
-* $ **UI_DESIGN=** Cosmic Glassmorphism / Particles.js
-
----
-
-## [ ⚙ ] THE TOOLKIT (DECRYPTED)
-This project was built with high-performance security protocols:
-
-{<br>
+{
   "💻 Backend": [
     ![Laravel](https://img.shields.io/badge/Laravel-001F4D?style=flat-square&logo=laravel&logoColor=00FFCC),
     ![PHP](https://img.shields.io/badge/PHP-001F4D?style=flat-square&logo=php&logoColor=00FFCC),
     ![MySQL](https://img.shields.io/badge/MySQL-001F4D?style=flat-square&logo=mysql&logoColor=00FFCC)
   ],
-<br>
   "🛡️ Security": [
     ![CSRF](https://img.shields.io/badge/CSRF_Protection-001F4D?style=flat-square&logoColor=00FFCC),
     ![Eloquent](https://img.shields.io/badge/Eloquent_ORM-001F4D?style=flat-square&logo=laravel&logoColor=00FFCC),
     ![Bcrypt](https://img.shields.io/badge/Bcrypt_Hashing-001F4D?style=flat-square&logoColor=00FFCC)
   ],
-<br>
   "⬢ Frontend": [
     ![Bootstrap](https://img.shields.io/badge/Bootstrap-001F4D?style=flat-square&logo=bootstrap&logoColor=00FFCC),
     ![JavaScript](https://img.shields.io/badge/JavaScript-001F4D?style=flat-square&logo=javascript&logoColor=00FFCC),
     ![CSS3](https://img.shields.io/badge/CSS3-001F4D?style=flat-square&logo=css3&logoColor=00FFCC)
-  ]<br>
+  ]
 }
 
 ---
 
-## [ 🛡️ ] LOG_02: DEFENSIVE ARCHITECTURE
-The system is hardened against common attack vectors using modern frameworks:
+## Security Architecture
 
-* **{**
-* **"Protection":** [`CSRF Tokens`, `SQLi Prevention via Eloquent`, `XSS Escaping`],
-* **"Authentication":** [`Secure Session Management`, `Bcrypt Password Hashing`],
-* **"Data Integrity":** [`Foreign Key Constraints`, `Migration-based Schema`],
-* **"UI Stability":** [`Z-Index Stacking Context Management`, `Portal-based Dropdowns`]
-* **}**
+* **Protection:** CSRF tokens, SQL injection prevention via Eloquent ORM, XSS output escaping
+* **Authentication:** Secure session management, Bcrypt password hashing
+* **Data Integrity:** Foreign key constraints, migration-based schema versioning
+* **UI Stability:** Managed z-index stacking, portal-based dropdown rendering
 
 ---
 
-## [ 💾 ] LOG_03: SYSTEM_MODULES
+## System Modules
 
-#### 📦 [ASSET_CRUD] > [MANAGE_INVENTORY]
-> Complete lifecycle management for enterprise assets.
-> Create, Read, Update, Delete with real-time feedback.
+#### 📦 Asset Management — CRUD
+Complete lifecycle management for enterprise assets — create, read, update, and delete with validation and real-time feedback.
 
-#### 🏷️ [TAG_ORCHESTRATION] > [TOM_SELECT_INTEGRATION]
-> Advanced multi-tagging system with searchable inputs.
-> On-the-fly tag generation for rapid categorization.
+#### 🏷️ Tag Orchestration — Tom Select Integration
+Advanced multi-tagging system with searchable inputs and on-the-fly tag creation for rapid categorization.
 
-#### 🔍 [DYNAMIC_FILTERING] > [QUERY_BUILDER]
-> High-speed filtering by price, category, and keywords.
-> Optimized database queries for zero-latency retrieval.
+#### 🔍 Dynamic Filtering — Query Builder
+High-speed filtering by price, category, and keywords with optimized database queries.
 
-#### 🧪 [DEV_SANDBOX] > [SIDEBAR_NAVIGATION]
-> Dedicated environment for testing algorithmic logic.
-> Multi-tool interface for Even numbers, Primes, and Calculations.
+#### 🧪 Developer Sandbox — Sidebar Navigation
+Dedicated environment for testing algorithmic logic including even/prime calculations and utility tools.
 
 ---
 
-## [ 📊 ] LOG_04: REPOSITORY_STRUCTURE
+## Repository Structure
 
 ```
 WebSecurity/
-│
 ├── app/
 │   ├── Http/Controllers/
 │   ├── Models/
 │   └── Providers/
-│
 ├── config/
 ├── database/
 │   ├── migrations/
 │   └── seeders/
-│
 ├── public/
 │   ├── css/
 │   └── images/
-│
 ├── resources/
 │   ├── css/
 │   ├── js/
 │   └── views/
-│
 ├── routes/
 ├── storage/
 ├── tests/
@@ -114,7 +96,7 @@ WebSecurity/
 
 ---
 
-## [ ⚙ ] LOG_05: INSTALLATION_AND_EXECUTION
+## Installation and Execution
 
 ### Prerequisites
 * PHP 8.2+, Composer, Node.js, MySQL
@@ -137,41 +119,34 @@ php artisan serve
 
 ---
 
-## [ 🔍 ] LOG_06: TECHNICAL_HIGHLIGHTS
+## Technical Highlights
 
-* **Cosmic Glassmorphism UI** — Modern aesthetic with Particles.js background effects
-* **Eloquent ORM Security** — SQL injection prevention through Laravel's query builder
+* **Secure ORM Usage** — SQL injection prevention through Laravel Eloquent query builder
 * **Multi-Tagging System** — Advanced categorization with searchable select inputs
-* **Algorithmic Sandbox** — Built-in dev tools for testing mathematical logic
+* **Responsive UI** — Modern interface with stable layout and stacking context management
+* **Algorithmic Sandbox** — Built-in development tools for mathematical logic testing
 
 ---
 
-## [ ⚠ ] LOG_07: CHALLENGES_AND_SOLUTIONS
+## Challenges and Solutions
 
 | Challenge | Solution |
 |-----------|----------|
-| Z-index stacking with glassmorphism | Portal-based dropdowns with managed stacking contexts |
+| Z-index stacking with layered components | Portal-based dropdowns with managed stacking contexts |
 | Tag search performance | Debounced AJAX search with indexed queries |
 
 ---
 
-## [ 🎯 ] LOG_08: LEARNING_OUTCOMES
+## Learning Outcomes
 
-* **Laravel Security** — CSRF, SQLi prevention, XSS escaping patterns
-* **UI Architecture** — Glassmorphism design with stable z-index management
-* **Database Integrity** — Migration-based schema with foreign key constraints
+* Laravel security patterns — CSRF, SQL injection prevention, XSS escaping
+* UI architecture with stable layout management
+* Database integrity through migration-based schema design
 
 ---
 
-## [ ✉ ] TRANSMIT_DATA
-> **The code speaks louder than words. Review it.**
-
+## Contact
 * **LinkedIn:** [paula-maged](https://www.linkedin.com/in/paula-maged-04a721249/)
-* **Encrypted Mail:** [paulamagedcyber@gmail.com](mailto:paulamagedcyber@gmail.com)
+* **Email:** [paulamagedcyber@gmail.com](mailto:paulamagedcyber@gmail.com)
 * **Portfolio:** [pm-cybersec.github.io](https://pm-cybersec.github.io/portfolio-site)
-* **Org:** IEEE Student Branch (Tech & R&D)
-
----
-
-### > Goodbye, friend.
-### > [EOF]
+* **Organization:** IEEE Student Branch — Technical & R&D
