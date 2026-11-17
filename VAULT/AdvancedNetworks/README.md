@@ -48,58 +48,67 @@ Enterprise-style IoT and sensor network implemented in Cisco Packet Tracer using
 
 | Segment | VLAN | Purpose | Subnet | Gateway |
 |---------|------|---------|--------|---------|
-| IoT Sensors | 10 | Wireless IoT sensor devices | 192.168.10.0/24 | 192.168.10.1 |
-| Users | 20 | End-user devices and printer | 192.168.20.0/24 | 192.168.20.1 |
-| Servers | 30 | IoT Server and Network Controller | 192.168.30.0/24 | 192.168.30.1 |
-| Management | 50 | Administrative access | 192.168.50.0/24 | 192.168.50.2 |
+| IoT | 10 | Sensors & IoT devices (Switch2) | 192.168.10.0/24 | 192.168.10.1 |
+| Users | 20 | PCs & Printer (Switch1) | 192.168.20.0/24 | 192.168.20.1 |
+| Servers / Core | 30 | Servers & Network Controller (MLS) | 192.168.30.0/24 | 192.168.30.1 |
+| Management | 50 | Network device management | 192.168.50.0/24 | 192.168.50.1 |
 
 * **Isolation:** VLAN-based segmentation per functional domain
-* **Routing:** Inter-VLAN routing via multilayer switch with gateway redundancy
+* **Routing:** Inter-VLAN routing via Multilayer Switch 3560 SVI gateways
 * **Access Control:** ACL-based traffic filtering and restricted management access
+* **DHCP:** IoT clients on VLAN 10 obtain addresses from the Home Gateway
 
 ---
 
 ## System Modules
 
 #### 🌐 Core Switch — MLS 3560
-Central routing and VLAN gateway handling inter-VLAN routing, DHCP services, and Layer 3 switching.
+Central routing and VLAN gateway handling inter-VLAN routing and Layer 3 switching. Management address: 192.168.50.2.
 
 #### 📡 IoT Segment — VLAN 10
-Wireless IoT sensor devices connected via access point. SSID: `IoT-WiFi`.
+Sensors and IoT devices connected via the access point (SSID: `IoT-WiFi`) and Switch2. Addresses are assigned by DHCP from the Home Gateway. Optional switch management IPs: Switch1 `192.168.10.2`, Switch2 `192.168.10.3`.
 
 #### 👥 User Segment — VLAN 20
-User workstations (PC0: 192.168.20.10, PC1: 192.168.20.11) and shared printer (192.168.20.12).
+User workstations (PC0: 192.168.20.10, PC1: 192.168.20.11) and shared printer (192.168.20.12) on Switch1.
 
 #### 🖥️ Server Segment — VLAN 30
-IoT Server (192.168.30.10) and Network Controller (192.168.30.20).
+IoT Server (192.168.30.10), Local-net Server (192.168.30.11), and Network Controller (192.168.30.20).
 
 #### ⚙️ Management — VLAN 50
-Dedicated administrative network (Router Management: 192.168.50.5).
+Dedicated device-management network: MLS (192.168.50.2), Router0 (192.168.50.3), Router1 (192.168.50.4), Router2 (192.168.50.5).
 
 ---
 
 ## Network Topology
 
+![Network Topology](topology.png.png)
+
 ### IP Addressing Plan
 | Device | IP Address |
 |--------|------------|
-| MLS VLAN10 | 192.168.10.1 |
-| MLS VLAN20 | 192.168.20.1 |
-| MLS VLAN30 | 192.168.30.1 |
-| MLS VLAN50 | 192.168.50.2 |
-| IoT Server | 192.168.30.10 |
-| Network Controller | 192.168.30.20 |
+| MLS SVI VLAN10 (Gateway) | 192.168.10.1 |
+| MLS SVI VLAN20 (Gateway) | 192.168.20.1 |
+| MLS SVI VLAN30 (Gateway) | 192.168.30.1 |
+| MLS SVI VLAN50 (Gateway) | 192.168.50.1 |
+| Switch1 (Management) | 192.168.10.2 |
+| Switch2 (Management) | 192.168.10.3 |
 | PC0 | 192.168.20.10 |
 | PC1 | 192.168.20.11 |
 | Printer | 192.168.20.12 |
-| Router Management | 192.168.50.5 |
+| IoT Server | 192.168.30.10 |
+| Local-net Server | 192.168.30.11 |
+| Network Controller | 192.168.30.20 |
+| MLS (Management) | 192.168.50.2 |
+| Router0 (Management) | 192.168.50.3 |
+| Router1 (Management) | 192.168.50.4 |
+| Router2 (Management) | 192.168.50.5 |
 
 ### WAN Router Links
-| Link | Network |
-|------|---------|
-| R0 ↔ R1 | 192.168.1.0/30 |
-| R1 ↔ R2 | 192.168.1.4/30 |
-| R0 ↔ R2 | 192.168.1.8/30 |
+| Link | Network | Endpoints |
+|------|---------|-----------|
+| R0 ↔ R1 | 192.168.1.0/30 | R0: 192.168.1.1 / R1: 192.168.1.2 |
+| R1 ↔ R2 | 192.168.1.4/30 | R1: 192.168.1.5 / R2: 192.168.1.6 |
+| R0 ↔ R2 | 192.168.1.8/30 | R0: 192.168.1.9 / R2: 192.168.1.10 |
 
 ---
 
@@ -110,7 +119,7 @@ Dedicated administrative network (Router Management: 192.168.50.5).
 enable
 conf t
 vlan 10
-name IoT-Sensors
+name IoT
 vlan 20
 name Users
 vlan 30
@@ -120,12 +129,19 @@ name Management
 interface vlan 10
 ip address 192.168.10.1 255.255.255.0
 no shutdown
+interface vlan 20
+ip address 192.168.20.1 255.255.255.0
+no shutdown
+interface vlan 30
+ip address 192.168.30.1 255.255.255.0
+no shutdown
+interface vlan 50
+ip address 192.168.50.1 255.255.255.0
+no shutdown
 ip routing
-ip dhcp pool IOT
-network 192.168.10.0 255.255.255.0
-default-router 192.168.10.1
-dns-server 192.168.30.10
 ```
+
+> DHCP for VLAN 10 is provided by the Home Gateway (default router `192.168.10.1`).
 
 ### Access Point
 | Setting | Value |
@@ -154,7 +170,7 @@ show mac address-table    # MAC table
 2. Open `iot network project final.pkt` in Cisco Packet Tracer
 3. Verify VLAN configuration with `show vlan brief`
 4. Test inter-VLAN connectivity between segments
-5. Verify DHCP pool allocation
+5. Verify DHCP lease allocation on the Home Gateway
 
 ---
 
